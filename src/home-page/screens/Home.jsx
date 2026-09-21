@@ -1,74 +1,120 @@
-import About from "./About";
 import PrimaryBtn from "../../components/Primary-btn";
+import SecondaryBtn from "../../components/Secondary-btn";
+import Stat from "../../components/Stat";
+import { man, download } from "../../assets/assets";
+import { profile, stats } from "../../data/portfolio";
+
+function scrollTo(id) {
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: "smooth" });
+}
 
 function Home() {
     return (
-        <div className="relative w-full">
-            {/* use for background color */}
-            <div className="absolute w-[871px] h-[871px] bg-[#DA4DF1] opacity-40 rounded-full -top-[70%] right-[-350px] -z-1 blur-[350px]"></div>
-            {/* use for background color */}
-            <div className="absolute w-[871px] h-[871px] bg-[#C4F5E9] opacity-70 rounded-full top-[18%] right-[-450px] -z-1 blur-[350px]"></div>
-            {/* use for main content */}
-            <div className="flex flex-row items-center mt-28 ml-48 mr-48">
-                <div className="flex-col mr-36">
-                    <div className="text-6xl font-semibold">
-                        Hello I'm
-                        <br />
-                        Somen Chatterjee
+        <section id="home" className="relative w-full overflow-hidden">
+            <div className="aurora" />
+            <div className="absolute inset-0 grid-bg -z-10 opacity-70" />
+
+            <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-24 pt-20 lg:pt-32 px-6 md:px-16 lg:px-40 pb-24">
+                <div className="flex-1 order-2 lg:order-1 relative z-10">
+                    <div className="inline-flex items-center gap-2 bg-white/[0.04] border border-white/10 rounded-full pl-1.5 pr-4 py-1.5 backdrop-blur mb-6">
+                        <span className="relative flex w-2 h-2">
+                            <span className="absolute inset-0 rounded-full bg-emerald-400 animate-ping opacity-75" />
+                            <span className="relative rounded-full w-2 h-2 bg-emerald-400" />
+                        </span>
+                        <span className="text-xs font-medium text-[var(--muted)]">
+                            Available for work · Jaipur, IN
+                        </span>
                     </div>
-                    <div className="text-base font-normal text-[#556070] mt-4">
-                        I'm a Freelance UI/UX Designer and Developer based in
-                        London, England. I strives to build immersive and
-                        beautiful web applications through carefully crafted
-                        code and user-centric design.
+
+                    <h1 className="text-4xl md:text-5xl lg:text-7xl font-semibold leading-[1.05]">
+                        <span className="block text-white">Hello, I'm</span>
+                        <span className="block text-gradient">
+                            {profile.name}
+                        </span>
+                    </h1>
+
+                    <div className="flex flex-wrap items-center gap-2 mt-5 text-sm md:text-base">
+                        <span className="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-white">
+                            {profile.role}
+                        </span>
+                        <span className="text-[var(--muted-2)]">·</span>
+                        <span className="text-[var(--muted)]">
+                            {profile.subtitle}
+                        </span>
                     </div>
-                    <div className="mt-4">
+
+                    <p className="text-base font-light text-[var(--muted)] mt-6 max-w-xl leading-relaxed">
+                        {profile.bio}
+                    </p>
+
+                    <div className="flex flex-wrap gap-3 mt-8">
                         <PrimaryBtn
-                            title="Say Hello!"
-                            onBtnClick={() => console.log("dsdsd")}
+                            title="Say Hello"
+                            onBtnClick={() => scrollTo("contact")}
+                        />
+                        <SecondaryBtn
+                            title="View Projects"
+                            image={
+                                <img
+                                    src={download}
+                                    alt=""
+                                    className="w-4 h-4 opacity-80 brightness-0 invert"
+                                />
+                            }
+                            onBtnClick={() => scrollTo("projects")}
                         />
                     </div>
 
-                    <div className="flex flex-row mt-24">
-                        <div className="flex bg-[#EDD8FF]/50 rounded-tl-[6px] rounded-bl-[6px] px-5 py-3 flex-col items-center w-[180px]">
-                            <div className="text-[#424E60] font-semibold text-2xl mb-2">
-                                15 Y.
+                    <div className="grid grid-cols-3 mt-14 lg:mt-16 rounded-2xl overflow-hidden card-glass max-w-lg">
+                        {stats.map((s, i) => (
+                            <div
+                                key={s.label}
+                                className={`${
+                                    i < stats.length - 1
+                                        ? "border-r border-white/10"
+                                        : ""
+                                }`}
+                            >
+                                <Stat value={s.value} label={s.label} />
                             </div>
-                            <div className="text-[#697484] font-light text-xs">
-                                Experience
-                            </div>
+                        ))}
+                    </div>
+                </div>
+
+                <div className="relative flex-shrink-0 order-1 lg:order-2">
+                    <div className="absolute inset-0 rounded-3xl blur-2xl opacity-30 -z-10 bg-gradient-to-tr from-[#A855F7] to-[#22D3EE] scale-90" />
+
+                    <div className="relative w-[280px] h-[360px] md:w-[400px] md:h-[500px] rounded-3xl overflow-hidden card-glass card-glow">
+                        <img
+                            className="w-full h-full object-cover"
+                            src={man}
+                            alt={profile.name}
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg)] via-transparent to-transparent opacity-60" />
+                    </div>
+
+                    <div className="absolute -bottom-5 -left-5 card-glass rounded-2xl px-4 py-3 flex items-center gap-3">
+                        <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#A855F7] to-[#22D3EE] flex items-center justify-center text-white text-lg font-semibold">
+                            ⌘
                         </div>
-                        <div className="w-[2px]"></div>
-                        <div className="flex bg-[#EDD8FF]/50 px-5 py-3 flex-col items-center w-[180px]">
-                            <div className="text-[#424E60] font-semibold text-2xl mb-2">
-                                250+
+                        <div>
+                            <div className="text-[10px] uppercase tracking-widest text-[var(--muted)]">
+                                Focus
                             </div>
-                            <div className="text-[#697484] font-light text-xs">
-                                Project Completed
-                            </div>
-                        </div>
-                        <div className="w-[2px]"></div>
-                        <div className="flex bg-[#EDD8FF]/50 rounded-tr-[6px] rounded-br-[6px] px-5 py-3 flex-col items-center w-[180px]">
-                            <div className="text-[#424E60] font-semibold text-2xl mb-2">
-                                58
-                            </div>
-                            <div className="text-[#697484] font-light text-xs">
-                                Happy Client
+                            <div className="text-sm font-semibold text-white">
+                                Mobile Engineering
                             </div>
                         </div>
                     </div>
-                </div>
-                <div className="flex flex-shrink-0 w-[400px] h-[500px] bg-white shadow-2xl rounded-3xl content-center items-center justify-center overflow-hidden">
-                    <img
-                        className="w-full h-full object-fill"
-                        src="src/assets/man.png"
-                        alt="Profile image"
-                    />
+
+                    <div className="absolute -top-3 -right-3 card-glass rounded-full px-3 py-1.5 text-[10px] font-medium text-white flex items-center gap-1.5">
+                        <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent)]" />
+                        v4.7 · Shipping
+                    </div>
                 </div>
             </div>
-
-            <About />
-        </div>
+        </section>
     );
 }
 

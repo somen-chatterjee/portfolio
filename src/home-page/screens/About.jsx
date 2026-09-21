@@ -1,104 +1,105 @@
-// About.jsx;
 import PrimaryBtn from "../../components/Primary-btn";
 import SecondaryBtn from "../../components/Secondary-btn";
+import {
+    man,
+    linkedin,
+    github,
+    whatsapp,
+    instagram,
+    download,
+} from "../../assets/assets";
+import { profile } from "../../data/portfolio";
+
+function scrollTo(id) {
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: "smooth" });
+}
+
+const SOCIALS = [
+    { icon: linkedin, href: profile.linkedin, label: "LinkedIn" },
+    { icon: github, href: profile.github, label: "GitHub" },
+    { icon: instagram, href: profile.instagram, label: "Instagram" },
+    { icon: whatsapp, href: profile.whatsapp, label: "WhatsApp" },
+];
 
 function About() {
     return (
-        <div className="flex items-center justify-center mb-[-80px] mt-44">
-            <div className="w-full mr-[240px] ml-[240px] px-24 pt-20 pb-32 bg-white shadow-xl rounded-xl flex items-center justify-around">
-                <div className="relative">
-                    <div className="bg-[#F0F1F3] w-[320px] h-[400px] flex-shrink-0 justify-between rounded-xl overflow-hidden">
+        <section
+            id="about"
+            className="relative flex items-center justify-center py-24 px-6 md:px-16 lg:px-40"
+        >
+            <div className="w-full max-w-6xl card-glass card-glow rounded-3xl flex flex-col md:flex-row items-center gap-12 md:gap-20 px-8 md:px-20 py-16 md:py-20 reveal">
+                <div className="relative flex-shrink-0">
+                    <div className="w-[280px] h-[360px] rounded-2xl overflow-hidden ring-1 ring-white/10 shadow-[0_30px_60px_-20px_rgba(168,85,247,0.4)]">
                         <img
-                            className="w-full h-full object-fill"
-                            src="src/assets/man.png"
-                            alt="Profile image"
+                            className="w-full h-full object-cover"
+                            src={man}
+                            alt={profile.name}
                         />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
                     </div>
 
-                    <div className="absolute flex -bottom-7 left-1/2 -translate-x-1/2 bg-white rounded-[4px] shadow-xl p-2.5">
-                        <button className="w-[40px] h-[40px] mx-1 flex items-center justify-center">
-                            <img
-                                className=""
-                                src="src/assets/facebook.svg"
-                                alt="facebook image"
-                            />
-                        </button>
-                        <button className="w-[40px] h-[40px] mx-1 flex items-center justify-center">
-                            <img
-                                className=""
-                                src="src/assets/insta.svg"
-                                alt="facebook image"
-                            />
-                        </button>
-                        <button className="w-[40px] h-[40px] mx-1 flex items-center justify-center">
-                            <img
-                                className=""
-                                src="src/assets/linkdin.svg"
-                                alt="facebook image"
-                            />
-                        </button>
-                        <button className="w-[40px] h-[40px] mx-1 flex items-center justify-center">
-                            <img
-                                className=""
-                                src="src/assets/github.svg"
-                                alt="facebook image"
-                            />
-                        </button>
+                    <div className="absolute flex -bottom-6 left-1/2 -translate-x-1/2 card-glass rounded-2xl p-2 gap-1">
+                        {SOCIALS.map((s) => (
+                            <a
+                                key={s.label}
+                                href={s.href}
+                                target="_blank"
+                                rel="noreferrer"
+                                aria-label={s.label}
+                                className="w-10 h-10 flex items-center justify-center rounded-xl hover:bg-white/10 hover:-translate-y-0.5 transition-all"
+                            >
+                                <img
+                                    src={s.icon}
+                                    alt=""
+                                    className="w-5 h-5 brightness-0 invert opacity-80"
+                                />
+                            </a>
+                        ))}
                     </div>
                 </div>
-                <div className="flex-col ml-24">
-                    <div className="text-4xl font-semibold">
-                        I am Professional User <br />
-                        Experience Designer
+
+                <div className="flex-1">
+                    <div className="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-[var(--primary-2)] font-semibold mb-4">
+                        <span className="w-6 h-px bg-[var(--primary-2)]" />
+                        About Me
                     </div>
-                    <div className="text-sm font-light text-[#87909D] mt-4">
-                        I design and develop services for customers specializing
-                        creating stylish, modern websites, web services and
-                        online stores. My passion is to design digital user
-                        experiences.
-                        <br />
-                        <br />I design and develop services for customers
-                        specializing creating stylish, modern websites, web
-                        services.
-                    </div>
-                    <div className="flex">
-                        <div className="mr-5 mt-4">
-                            <PrimaryBtn
-                                title="My Project!"
-                                onBtnClick={() => console.log("My Project!")}
-                            />
-                        </div>
+                    <h2 className="text-3xl md:text-5xl font-semibold leading-tight text-white">
+                        Mobile Engineer<br />
+                        <span className="text-gradient">
+                            who ships end-to-end
+                        </span>
+                    </h2>
+                    <p className="text-sm md:text-base font-light text-[var(--muted)] mt-5 leading-relaxed">
+                        {profile.aboutLong}
+                    </p>
+                    <p className="text-sm font-light text-[var(--muted-2)] mt-4 leading-relaxed">
+                        Based in {profile.location}. Currently at Dreamcast,
+                        owning mobile and desktop delivery.
+                    </p>
 
-                        <div className="mt-4">
-                            <SecondaryBtn
-                                title="Download CV"
-                                image={
-                                    <img
-                                        src="src/assets/download.svg"
-                                        alt="download image"
-                                        className="w-4 h-4"
-                                    />
-                                }
-                                onBtnClick={() => console.log("My Project!")}
-                            />
-                        </div>
-
-                        {/* <button className="bg-[#A53DFF] border-[1px] border-[#A53DFF] px-5 py-3 mt-4 mr-5 rounded-sm text-white font-medium text-xs">
-                            My Project!
-                        </button> */}
-
-                        {/* <button className="flex items-center gap-2 bg-white border-[1px] border-[#A53DFF] px-5 py-3 mt-4 rounded-sm text-[#A53DFF] font-medium text-xs">
-                            <img
-                                src="src/assets/download.svg"
-                                alt="download image"
-                                className="w-4 h-4"
-                            />
-                            Download CV
-                        </button> */}
+                    <div className="flex flex-wrap gap-4 mt-8">
+                        <PrimaryBtn
+                            title="My Projects"
+                            onBtnClick={() => scrollTo("projects")}
+                        />
+                        <SecondaryBtn
+                            title="Download CV"
+                            image={
+                                <img
+                                    src={download}
+                                    alt=""
+                                    className="w-4 h-4 brightness-0 invert opacity-80"
+                                />
+                            }
+                            onBtnClick={() =>
+                                window.open(profile.linkedin, "_blank")
+                            }
+                        />
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
     );
 }
 
