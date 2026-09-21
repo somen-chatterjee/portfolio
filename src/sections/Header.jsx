@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
-import PrimaryBtn from "../../components/Primary-btn";
+import PrimaryBtn from "../components/Primary-btn";
+import { scrollTo } from "../utils/scroll";
 
 const NAV = [
     { id: "home", label: "Home" },
@@ -10,12 +11,7 @@ const NAV = [
     { id: "process", label: "Process" },
 ];
 
-function scrollTo(id) {
-    const el = document.getElementById(id);
-    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
-}
-
-function Headers() {
+function Header() {
     const [scrolled, setScrolled] = useState(false);
     const [hidden, setHidden] = useState(false);
     const [open, setOpen] = useState(false);
@@ -159,4 +155,4 @@ function Headers() {
     );
 }
 
-export default Headers;
+export default Header;

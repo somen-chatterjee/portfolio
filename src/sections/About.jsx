@@ -1,26 +1,9 @@
-import PrimaryBtn from "../../components/Primary-btn";
-import SecondaryBtn from "../../components/Secondary-btn";
-import {
-    man,
-    linkedin,
-    github,
-    whatsapp,
-    instagram,
-    download,
-} from "../../assets/assets";
-import { profile } from "../../data/portfolio";
+import PrimaryBtn from "../components/Primary-btn";
+import SecondaryBtn from "../components/Secondary-btn";
+import { man, download } from "../assets/assets";
+import { profile, socials } from "../data/portfolio";
 
-function scrollTo(id) {
-    const el = document.getElementById(id);
-    if (el) el.scrollIntoView({ behavior: "smooth" });
-}
-
-const SOCIALS = [
-    { icon: linkedin, href: profile.linkedin, label: "LinkedIn" },
-    { icon: github, href: profile.github, label: "GitHub" },
-    { icon: instagram, href: profile.instagram, label: "Instagram" },
-    { icon: whatsapp, href: profile.whatsapp, label: "WhatsApp" },
-];
+import { scrollTo } from "../utils/scroll";
 
 function About() {
     return (
@@ -28,7 +11,7 @@ function About() {
             id="about"
             className="relative flex items-center justify-center py-24 px-6 md:px-16 lg:px-40"
         >
-            <div className="w-full max-w-6xl card-glass card-glow rounded-3xl flex flex-col md:flex-row items-center gap-12 md:gap-20 px-8 md:px-20 py-16 md:py-20 reveal">
+            <div className="w-full max-w-6xl card-glass card-glow rounded-3xl flex flex-col md:flex-row items-center gap-12 md:gap-20 px-8 md:px-20 py-16 md:py-20 reveal hover:shadow-[0_0_36px_rgba(168,85,247,0.45)] hover:border-[rgba(168,85,247,0.5)] transition-[box-shadow,border-color] duration-300">
                 <div className="relative flex-shrink-0">
                     <div className="w-[280px] h-[360px] rounded-2xl overflow-hidden ring-1 ring-white/10 shadow-[0_30px_60px_-20px_rgba(168,85,247,0.4)]">
                         <img
@@ -40,19 +23,19 @@ function About() {
                     </div>
 
                     <div className="absolute flex -bottom-6 left-1/2 -translate-x-1/2 rounded-2xl p-2 gap-1 bg-white/[0.06] backdrop-blur-2xl backdrop-saturate-150 border border-white/20 shadow-[inset_0_1px_0_rgba(255,255,255,0.25),0_18px_40px_-16px_rgba(168,85,247,0.5)]">
-                        {SOCIALS.map((s) => (
+                        {socials.map((s) => (
                             <a
                                 key={s.label}
                                 href={s.href}
                                 target="_blank"
                                 rel="noreferrer"
                                 aria-label={s.label}
-                                className="group w-10 h-10 flex items-center justify-center rounded-xl hover:bg-white/10 hover:-translate-y-0.5 hover:shadow-[0_0_18px_rgba(168,85,247,0.45)] transition-[transform,background-color,box-shadow] duration-200 will-change-transform"
+                                className="w-10 h-10 flex items-center justify-center rounded-xl hover:bg-white/10 hover:-translate-y-0.5 transition-[transform,background-color] duration-200 will-change-transform"
                             >
                                 <img
                                     src={s.icon}
                                     alt=""
-                                    className="w-5 h-5 brightness-0 invert opacity-80 transition-[filter,opacity] duration-200 group-hover:brightness-100 group-hover:invert-0 group-hover:opacity-100"
+                                    className="w-5 h-5 brightness-0 invert opacity-80"
                                 />
                             </a>
                         ))}
@@ -65,7 +48,8 @@ function About() {
                         About Me
                     </div>
                     <h2 className="text-3xl md:text-5xl font-semibold leading-tight text-white">
-                        Mobile Engineer<br />
+                        Mobile Engineer
+                        <br />
                         <span className="text-gradient">
                             who ships end-to-end
                         </span>

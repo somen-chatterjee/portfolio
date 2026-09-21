@@ -1,3 +1,5 @@
+import { linkedin, github, instagram, whatsapp } from "../assets/assets";
+
 export const profile = {
     name: "Somen Chatterjee",
     role: "Mobile Engineer",
@@ -270,3 +272,17 @@ export const education = {
     year: "2021",
     cgpa: "7.00",
 };
+
+export const socials = [
+    { icon: linkedin, href: profile.linkedin, label: "LinkedIn", glow: "#0A66C2" },
+    { icon: github, href: profile.github, label: "GitHub", glow: "#ffffff" },
+    { icon: instagram, href: profile.instagram, label: "Instagram", glow: "#E1306C" },
+    { icon: whatsapp, href: profile.whatsapp, label: "WhatsApp", glow: "#25D366" },
+];
+
+export const marquee = [
+    "Kotlin", "Flutter", "Dart", "Android SDK", "Coroutines", "Jetpack",
+    "Firebase", "GitHub Actions", "USB OTG", "FFI", "MethodChannels",
+    "GetX", "BLoC", "Shorebird", "Fastlane", "AAR", "Isolates",
+    "Material 3", "S3", "Dio", "ProGuard", "CMake",
+];

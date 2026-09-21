@@ -1,13 +1,10 @@
-import PrimaryBtn from "../../components/Primary-btn";
-import SecondaryBtn from "../../components/Secondary-btn";
-import Stat from "../../components/Stat";
-import { man, download } from "../../assets/assets";
-import { profile, stats } from "../../data/portfolio";
+import PrimaryBtn from "../components/Primary-btn";
+import SecondaryBtn from "../components/Secondary-btn";
+import Stat from "../components/Stat";
+import { man, download } from "../assets/assets";
+import { profile, stats } from "../data/portfolio";
 
-function scrollTo(id) {
-    const el = document.getElementById(id);
-    if (el) el.scrollIntoView({ behavior: "smooth" });
-}
+import { scrollTo } from "../utils/scroll";
 
 function Home() {
     return (
@@ -35,7 +32,7 @@ function Home() {
                     </h1>
 
                     <div className="flex flex-wrap items-center gap-2 mt-5 text-sm md:text-base">
-                        <span className="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-white">
+                        <span className="px-3 py-1 rounded-full text-white font-medium bg-gradient-to-r from-[rgba(168,85,247,0.25)] to-[rgba(34,211,238,0.2)] border border-[rgba(168,85,247,0.4)] shadow-[0_0_18px_-6px_rgba(168,85,247,0.6)]">
                             {profile.role}
                         </span>
                         <span className="text-[var(--muted-2)]">·</span>
@@ -66,7 +63,7 @@ function Home() {
                         />
                     </div>
 
-                    <div className="grid grid-cols-3 mt-14 lg:mt-16 rounded-2xl overflow-hidden card-glass max-w-lg">
+                    <div className="grid grid-cols-3 mt-14 lg:mt-16 rounded-2xl overflow-hidden card-glass max-w-lg border border-white/15 bg-gradient-to-br from-[rgba(168,85,247,0.08)] to-[rgba(34,211,238,0.05)] shadow-[0_10px_30px_-14px_rgba(168,85,247,0.35)]">
                         {stats.map((s, i) => (
                             <div
                                 key={s.label}

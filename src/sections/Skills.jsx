@@ -1,12 +1,5 @@
-import Tilt from "../../components/Tilt";
-import { skills } from "../../data/portfolio";
-
-const MARQUEE = [
-    "Kotlin", "Flutter", "Dart", "Android SDK", "Coroutines", "Jetpack",
-    "Firebase", "GitHub Actions", "USB OTG", "FFI", "MethodChannels",
-    "GetX", "BLoC", "Shorebird", "Fastlane", "AAR", "Isolates",
-    "Material 3", "S3", "Dio", "ProGuard", "CMake",
-];
+import Tilt from "../components/Tilt";
+import { skills, marquee } from "../data/portfolio";
 
 function Skills() {
     return (
@@ -34,7 +27,7 @@ function Skills() {
 
                 <div className="relative mb-12 overflow-hidden mask-fade">
                     <div className="marquee">
-                        {[...MARQUEE, ...MARQUEE].map((t, i) => (
+                        {[...marquee, ...marquee].map((t, i) => (
                             <span
                                 key={i}
                                 className="whitespace-nowrap text-xs font-medium text-white/70 bg-white/[0.04] border border-white/10 px-4 py-2 rounded-full backdrop-blur"
@@ -53,7 +46,7 @@ function Skills() {
                             style={{ transitionDelay: `${(i % 2) * 60}ms` }}
                         >
                             <Tilt max={3} className="h-full">
-                                <div className="card-glass card-glow rounded-2xl p-6 h-full">
+                                <div className="card-glass card-glow rounded-2xl p-6 h-full hover:shadow-[0_0_36px_rgba(168,85,247,0.45)] hover:border-[rgba(168,85,247,0.5)] transition-[box-shadow,border-color] duration-300">
                                 <div className="flex items-center gap-3 mb-4">
                                     <span className="w-1.5 h-6 rounded-full bg-gradient-to-b from-[var(--primary)] to-[var(--accent)]" />
                                     <h3 className="text-base md:text-lg font-semibold text-white">

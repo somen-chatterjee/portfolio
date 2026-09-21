@@ -1,5 +1,5 @@
-import Tilt from "../../components/Tilt";
-import { projects } from "../../data/portfolio";
+import Tilt from "../components/Tilt";
+import { projects } from "../data/portfolio";
 
 const BENTO = [
     "lg:col-span-2 lg:row-span-2",
@@ -109,7 +109,7 @@ function Projects() {
                             style={{ transitionDelay: `${(i % 3) * 60}ms` }}
                         >
                             <Tilt max={3} className="h-full">
-                                <div className="card-glass card-glow rounded-2xl p-6 flex flex-col h-full">
+                                <div className="card-glass card-glow rounded-2xl p-6 flex flex-col h-full hover:shadow-[0_0_36px_rgba(168,85,247,0.45)] hover:border-[rgba(168,85,247,0.5)] transition-[box-shadow,border-color] duration-300">
                                     <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[var(--primary)]/30 to-[var(--accent)]/20 border border-white/10 flex items-center justify-center mb-4">
                                         <svg
                                             viewBox="0 0 24 24"

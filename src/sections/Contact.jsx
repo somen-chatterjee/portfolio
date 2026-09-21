@@ -1,19 +1,5 @@
-import {
-    linkedin,
-    github,
-    whatsapp,
-    instagram,
-    mail,
-    phone,
-} from "../../assets/assets";
-import { profile } from "../../data/portfolio";
-
-const SOCIALS = [
-    { icon: linkedin, href: profile.linkedin, label: "LinkedIn" },
-    { icon: github, href: profile.github, label: "GitHub" },
-    { icon: instagram, href: profile.instagram, label: "Instagram" },
-    { icon: whatsapp, href: profile.whatsapp, label: "WhatsApp" },
-];
+import { mail, phone } from "../assets/assets";
+import { profile, socials } from "../data/portfolio";
 
 function Contact() {
     return (
@@ -32,7 +18,8 @@ function Contact() {
                     <span className="w-6 h-px bg-[var(--primary-2)]" />
                 </div>
                 <h2 className="text-4xl md:text-6xl font-semibold leading-[1.05] text-white">
-                    Let's build something<br />
+                    Let's build something
+                    <br />
                     <span className="text-gradient">people actually use</span>
                 </h2>
                 <p className="text-sm md:text-base text-[var(--muted)] mt-6 max-w-xl mx-auto leading-relaxed">
@@ -45,7 +32,11 @@ function Contact() {
                         href={`mailto:${profile.email}`}
                         className="group relative inline-flex items-center gap-2 px-6 py-3 rounded-full text-white font-medium text-xs bg-gradient-to-r from-[#A855F7] to-[#7C3AED] shadow-[0_0_0_1px_rgba(255,255,255,0.08)_inset,0_10px_30px_-8px_rgba(168,85,247,0.55)] hover:shadow-[0_0_0_1px_rgba(255,255,255,0.16)_inset,0_16px_40px_-8px_rgba(168,85,247,0.8)] transition-all duration-200 hover:-translate-y-0.5 overflow-hidden"
                     >
-                        <img src={mail} alt="" className="w-4 h-4 relative z-10" />
+                        <img
+                            src={mail}
+                            alt=""
+                            className="w-4 h-4 relative z-10"
+                        />
                         <span className="relative z-10">{profile.email}</span>
                         <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/25 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
                     </a>
@@ -62,20 +53,38 @@ function Contact() {
                 </div>
 
                 <div className="flex justify-center gap-3 mt-10">
-                    {SOCIALS.map((s) => (
+                    {socials.map((s) => (
                         <a
                             key={s.label}
                             href={s.href}
                             target="_blank"
                             rel="noreferrer"
                             aria-label={s.label}
-                            className="group w-11 h-11 flex items-center justify-center rounded-full bg-white/[0.06] backdrop-blur-2xl backdrop-saturate-150 border border-white/20 shadow-[inset_0_1px_0_rgba(255,255,255,0.2)] hover:-translate-y-1 hover:bg-white/10 hover:border-[var(--primary)]/60 hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.2),0_0_20px_rgba(168,85,247,0.5)] transition-[transform,background-color,border-color,box-shadow] duration-200 will-change-transform"
+                            style={{ "--glow": s.glow }}
+                            className="group relative w-11 h-11 rounded-full overflow-hidden border border-white/20 hover:border-[color:var(--glow)]/70 hover:shadow-[0_0_28px_color-mix(in_srgb,var(--glow)_60%,transparent)] transition-[border-color,box-shadow] duration-300 ease-out"
                         >
-                            <img
-                                src={s.icon}
-                                alt=""
-                                className="w-5 h-5 brightness-0 invert opacity-80 transition-[filter,opacity] duration-200 group-hover:brightness-100 group-hover:invert-0 group-hover:opacity-100"
-                            />
+                            <div className="flex flex-col h-[200%] w-full transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:-translate-y-1/2">
+                                <div className="h-1/2 flex items-center justify-center bg-white/[0.06] backdrop-blur-2xl backdrop-saturate-150">
+                                    <img
+                                        src={s.icon}
+                                        alt=""
+                                        className="w-5 h-5 brightness-0 invert opacity-80"
+                                    />
+                                </div>
+                                <div
+                                    className="h-1/2 flex items-center justify-center"
+                                    style={{
+                                        background:
+                                            "radial-gradient(circle at 50% 40%, color-mix(in srgb, var(--glow) 55%, transparent), color-mix(in srgb, var(--glow) 20%, transparent) 70%)",
+                                    }}
+                                >
+                                    <img
+                                        src={s.icon}
+                                        alt=""
+                                        className="w-5 h-5 brightness-0 invert drop-shadow-[0_0_6px_rgba(0,0,0,0.4)]"
+                                    />
+                                </div>
+                            </div>
                         </a>
                     ))}
                 </div>

@@ -1,4 +1,4 @@
-import { experience, education } from "../../data/portfolio";
+import { experience, education } from "../data/portfolio";
 
 function Experience() {
     return (
@@ -36,7 +36,7 @@ function Experience() {
                                 }`}
                             />
 
-                            <div className="card-glass card-glow rounded-2xl p-6 md:p-8 hover:-translate-y-0.5 transition-transform duration-200 ease-out">
+                            <div className="card-glass card-glow rounded-2xl p-6 md:p-8 hover:-translate-y-0.5 hover:shadow-[0_0_36px_rgba(168,85,247,0.45)] hover:border-[rgba(168,85,247,0.5)] transition-[transform,box-shadow,border-color] duration-300 ease-out">
                                 <div className="flex flex-wrap justify-between items-start gap-2 mb-2">
                                     <div>
                                         <h3 className="text-lg md:text-xl font-semibold text-white">

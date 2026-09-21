@@ -3,10 +3,7 @@
 :root {
     --bg: #07070f;
     --bg-2: #0b0b1c;
-    --surface: rgba(255, 255, 255, 0.04);
-    --surface-hi: rgba(255, 255, 255, 0.07);
     --border: rgba(255, 255, 255, 0.09);
-    --border-hi: rgba(255, 255, 255, 0.18);
     --text: #e7e9f5;
     --muted: #8a90a8;
     --muted-2: #5a607a;
@@ -18,7 +15,6 @@
 
 html {
     scroll-behavior: smooth;
-    scroll-padding-top: 88px;
     background: var(--bg);
     color-scheme: dark;
 }
@@ -86,7 +82,6 @@ h3 {
         transition: none;
     }
     .aurora,
-    .grain,
     .glow-pulse {
         animation: none !important;
     }
@@ -98,16 +93,6 @@ h3 {
         linear-gradient(90deg, rgba(168, 85, 247, 0.07) 1px, transparent 1px);
     background-size: 48px 48px;
     mask-image: radial-gradient(ellipse at center, #000 40%, transparent 80%);
-}
-
-.grain::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    opacity: 0.4;
-    mix-blend-mode: overlay;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.35 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
 .aurora {
@@ -249,16 +234,49 @@ body::before {
     animation: marquee 40s linear infinite;
     width: max-content;
 }
-.marquee-reverse {
-    animation-direction: reverse;
-    animation-duration: 50s;
-}
 @keyframes marquee {
     from {
         transform: translateX(0);
     }
     to {
         transform: translateX(-50%);
+    }
+}
+
+.ring-spin {
+    position: absolute;
+    inset: -3px;
+    border-radius: inherit;
+    padding: 2px;
+    background: conic-gradient(
+        from 0deg,
+        transparent 0deg,
+        var(--glow) 90deg,
+        transparent 200deg,
+        var(--glow) 300deg,
+        transparent 360deg
+    );
+    -webkit-mask:
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 250ms ease;
+    animation: ring-spin 2.2s linear infinite;
+    pointer-events: none;
+}
+.group:hover .ring-spin {
+    opacity: 1;
+}
+@keyframes ring-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+@media (prefers-reduced-motion: reduce) {
+    .ring-spin {
+        animation: none;
     }
 }
 
