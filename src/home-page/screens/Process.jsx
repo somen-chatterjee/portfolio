@@ -83,15 +83,15 @@ function Process() {
                 </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 flex-1 min-w-0 max-w-2xl">
+            <div className="grid grid-cols-1 md:grid-cols-2 md:auto-rows-fr gap-8 flex-1 min-w-0 max-w-2xl">
                 {process.map((p, i) => (
                     <div
                         key={p.step}
-                        className={`reveal ${i % 2 === 0 ? "md:-mt-6" : ""}`}
+                        className={`reveal h-full ${i % 2 === 0 ? "md:-mt-6" : ""}`}
                         style={{ transitionDelay: `${i * 60}ms` }}
                     >
                         <Tilt max={3} className="h-full">
-                            <div className="relative flex flex-col items-start card-glass card-glow gap-2 p-7 rounded-2xl min-h-[260px] h-full">
+                            <div className="relative flex flex-col items-start card-glass card-glow gap-2 p-7 rounded-2xl min-h-[320px] h-full">
                                 <div className="flex items-center justify-between w-full mb-3">
                                     <div className="w-14 h-14 rounded-2xl flex items-center justify-center bg-gradient-to-br from-[var(--primary)]/30 to-[var(--accent)]/20 border border-white/10 text-white">
                                         {ICONS[i]}

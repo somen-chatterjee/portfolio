@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import PrimaryBtn from "../../components/Primary-btn";
 
 const NAV = [
@@ -17,13 +17,24 @@ function scrollTo(id) {
 
 function Headers() {
     const [scrolled, setScrolled] = useState(false);
+    const [hidden, setHidden] = useState(false);
     const [open, setOpen] = useState(false);
     const [active, setActive] = useState("home");
+    const idleTimer = useRef();
 
     useEffect(() => {
-        const onScroll = () => setScrolled(window.scrollY > 20);
+        const onScroll = () => {
+            const y = window.scrollY;
+            setScrolled(y > 20);
+            if (y > 80) setHidden(true);
+            clearTimeout(idleTimer.current);
+            idleTimer.current = setTimeout(() => setHidden(false), 220);
+        };
         window.addEventListener("scroll", onScroll, { passive: true });
-        return () => window.removeEventListener("scroll", onScroll);
+        return () => {
+            window.removeEventListener("scroll", onScroll);
+            clearTimeout(idleTimer.current);
+        };
     }, []);
 
     useEffect(() => {
@@ -44,7 +55,9 @@ function Headers() {
 
     return (
         <header
-            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 will-change-transform ${
+                hidden ? "-translate-y-full" : "translate-y-0"
+            } ${
                 scrolled
                     ? "bg-[rgba(7,7,15,0.72)] backdrop-blur-xl border-b border-white/5"
                     : "bg-transparent"

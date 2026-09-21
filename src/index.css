@@ -25,7 +25,10 @@ html {
 
 body {
     font-family:
-        "Inter", system-ui, -apple-system, sans-serif;
+        "Inter",
+        system-ui,
+        -apple-system,
+        sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     background: var(--bg);
@@ -34,7 +37,9 @@ body {
     overflow-x: hidden;
 }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
     font-family: "Space Grotesk", "Inter", system-ui, sans-serif;
     letter-spacing: -0.03em;
 }
@@ -75,8 +80,16 @@ h1, h2, h3 {
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .reveal { opacity: 1; transform: none; transition: none; }
-    .aurora, .grain, .glow-pulse { animation: none !important; }
+    .reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+    .aurora,
+    .grain,
+    .glow-pulse {
+        animation: none !important;
+    }
 }
 
 .grid-bg {
@@ -102,8 +115,16 @@ h1, h2, h3 {
     inset: -10% -5% auto -5%;
     height: 70%;
     background:
-        radial-gradient(50% 50% at 28% 28%, rgba(168, 85, 247, 0.22), transparent 65%),
-        radial-gradient(45% 45% at 78% 38%, rgba(34, 211, 238, 0.14), transparent 65%);
+        radial-gradient(
+            50% 50% at 28% 28%,
+            rgba(168, 85, 247, 0.22),
+            transparent 65%
+        ),
+        radial-gradient(
+            45% 45% at 78% 38%,
+            rgba(34, 211, 238, 0.14),
+            transparent 65%
+        );
     filter: blur(50px);
     animation: aurora-drift 22s ease-in-out infinite alternate;
     z-index: -1;
@@ -111,8 +132,12 @@ h1, h2, h3 {
 }
 
 @keyframes aurora-drift {
-    0% { transform: translate3d(-2%, 0, 0) rotate(0deg); }
-    100% { transform: translate3d(3%, 2%, 0) rotate(6deg); }
+    0% {
+        transform: translate3d(-2%, 0, 0) rotate(0deg);
+    }
+    100% {
+        transform: translate3d(3%, 2%, 0) rotate(6deg);
+    }
 }
 
 body::before {
@@ -130,11 +155,17 @@ body::before {
     will-change: background-position;
 }
 @media (prefers-reduced-motion: reduce) {
-    body::before { display: none; }
+    body::before {
+        display: none;
+    }
 }
 
 .card-glass {
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.06),
+        rgba(255, 255, 255, 0.02)
+    );
     border: 1px solid var(--border);
 }
 
@@ -145,14 +176,14 @@ body::before {
 .card-glow::before {
     content: "";
     position: absolute;
-    inset: -1px;
+    inset: -2px;
     border-radius: inherit;
-    padding: 1px;
+    padding: 2px;
     background: radial-gradient(
-        220px circle at var(--mx, 50%) var(--my, 50%),
-        rgba(168, 85, 247, 0.8),
-        rgba(34, 211, 238, 0.4) 40%,
-        transparent 70%
+        260px circle at var(--mx, 50%) var(--my, 50%),
+        rgba(168, 85, 247, 1),
+        rgba(34, 211, 238, 0.6) 45%,
+        transparent 75%
     );
     -webkit-mask:
         linear-gradient(#000 0 0) content-box,
@@ -181,11 +212,14 @@ body::before {
     z-index: -1;
 }
 .card-glow:hover::before,
-.card-glow:hover::after { opacity: 1; }
+.card-glow:hover::after {
+    opacity: 1;
+}
 
 .tilt {
     transform-style: preserve-3d;
-    transform: perspective(1000px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+    transform: perspective(1000px) rotateX(var(--rx, 0deg))
+        rotateY(var(--ry, 0deg));
     transition: transform 500ms cubic-bezier(0.16, 1, 0.3, 1);
     will-change: transform;
 }
@@ -194,8 +228,20 @@ body::before {
 }
 
 .mask-fade {
-    mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
-    -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+    mask-image: linear-gradient(
+        90deg,
+        transparent,
+        #000 12%,
+        #000 88%,
+        transparent
+    );
+    -webkit-mask-image: linear-gradient(
+        90deg,
+        transparent,
+        #000 12%,
+        #000 88%,
+        transparent
+    );
 }
 .marquee {
     display: flex;
@@ -203,10 +249,17 @@ body::before {
     animation: marquee 40s linear infinite;
     width: max-content;
 }
-.marquee-reverse { animation-direction: reverse; animation-duration: 50s; }
+.marquee-reverse {
+    animation-direction: reverse;
+    animation-duration: 50s;
+}
 @keyframes marquee {
-    from { transform: translateX(0); }
-    to { transform: translateX(-50%); }
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-50%);
+    }
 }
 
 .glow-pulse {
@@ -216,8 +269,16 @@ body::before {
     animation: pulse-ring 2.6s ease-out infinite;
 }
 @keyframes pulse-ring {
-    0% { box-shadow: 0 0 0 0 rgba(168, 85, 247, 0.55), 0 0 22px rgba(168, 85, 247, 0.35); }
-    100% { box-shadow: 0 0 0 22px rgba(168, 85, 247, 0), 0 0 22px rgba(168, 85, 247, 0.15); }
+    0% {
+        box-shadow:
+            0 0 0 0 rgba(168, 85, 247, 0.55),
+            0 0 22px rgba(168, 85, 247, 0.35);
+    }
+    100% {
+        box-shadow:
+            0 0 0 22px rgba(168, 85, 247, 0),
+            0 0 22px rgba(168, 85, 247, 0.15);
+    }
 }
 
 .text-gradient {

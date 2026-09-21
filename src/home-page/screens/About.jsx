@@ -39,7 +39,7 @@ function About() {
                         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
                     </div>
 
-                    <div className="absolute flex -bottom-6 left-1/2 -translate-x-1/2 card-glass rounded-2xl p-2 gap-1">
+                    <div className="absolute flex -bottom-6 left-1/2 -translate-x-1/2 rounded-2xl p-2 gap-1 bg-white/[0.06] backdrop-blur-2xl backdrop-saturate-150 border border-white/20 shadow-[inset_0_1px_0_rgba(255,255,255,0.25),0_18px_40px_-16px_rgba(168,85,247,0.5)]">
                         {SOCIALS.map((s) => (
                             <a
                                 key={s.label}
@@ -47,12 +47,12 @@ function About() {
                                 target="_blank"
                                 rel="noreferrer"
                                 aria-label={s.label}
-                                className="w-10 h-10 flex items-center justify-center rounded-xl hover:bg-white/10 hover:-translate-y-0.5 transition-all"
+                                className="group w-10 h-10 flex items-center justify-center rounded-xl hover:bg-white/10 hover:-translate-y-0.5 hover:shadow-[0_0_18px_rgba(168,85,247,0.45)] transition-[transform,background-color,box-shadow] duration-200 will-change-transform"
                             >
                                 <img
                                     src={s.icon}
                                     alt=""
-                                    className="w-5 h-5 brightness-0 invert opacity-80"
+                                    className="w-5 h-5 brightness-0 invert opacity-80 transition-[filter,opacity] duration-200 group-hover:brightness-100 group-hover:invert-0 group-hover:opacity-100"
                                 />
                             </a>
                         ))}

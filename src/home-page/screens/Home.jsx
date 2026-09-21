@@ -94,23 +94,49 @@ function Home() {
                         <div className="absolute inset-0 bg-gradient-to-t from-[var(--bg)] via-transparent to-transparent opacity-60" />
                     </div>
 
-                    <div className="absolute -bottom-5 -left-5 card-glass rounded-2xl px-4 py-3 flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#A855F7] to-[#22D3EE] flex items-center justify-center text-white text-lg font-semibold">
-                            ⌘
+                    <div className="absolute -bottom-6 -left-6 rounded-2xl p-3 pr-5 flex items-center gap-3 bg-white/[0.06] backdrop-blur-2xl backdrop-saturate-150 border border-white/20 shadow-[inset_0_1px_0_rgba(255,255,255,0.25),inset_0_-1px_0_rgba(255,255,255,0.05),0_20px_50px_-16px_rgba(168,85,247,0.5)]">
+                        <div className="relative w-11 h-11 rounded-xl bg-gradient-to-br from-[#A855F7] to-[#22D3EE] flex items-center justify-center shadow-[0_8px_20px_-6px_rgba(168,85,247,0.6)]">
+                            <svg
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="white"
+                                strokeWidth="1.8"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                className="w-5 h-5"
+                            >
+                                <rect
+                                    x="6"
+                                    y="2"
+                                    width="12"
+                                    height="20"
+                                    rx="3"
+                                />
+                                <path d="M11 18h2" />
+                            </svg>
+                            <span className="absolute inset-0 rounded-xl ring-1 ring-white/25" />
                         </div>
-                        <div>
-                            <div className="text-[10px] uppercase tracking-widest text-[var(--muted)]">
-                                Focus
+                        <div className="min-w-0">
+                            <div className="flex items-center gap-1.5">
+                                <span className="w-1 h-1 rounded-full bg-emerald-400 animate-pulse" />
+                                <div className="text-[9px] uppercase tracking-[0.18em] text-[var(--muted)] font-semibold">
+                                    Currently
+                                </div>
                             </div>
-                            <div className="text-sm font-semibold text-white">
-                                Mobile Engineering
+                            <div className="text-sm font-semibold text-white tracking-tight leading-tight mt-0.5">
+                                Building mobile apps
                             </div>
                         </div>
                     </div>
 
-                    <div className="absolute -top-3 -right-3 card-glass rounded-full px-3 py-1.5 text-[10px] font-medium text-white flex items-center gap-1.5">
-                        <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent)]" />
-                        v4.7 · Shipping
+                    <div className="absolute -top-3 -right-3 flex items-center gap-2 rounded-full pl-2 pr-3.5 py-1.5 bg-white/[0.08] backdrop-blur-2xl backdrop-saturate-150 border border-white/25 shadow-[inset_0_1px_0_rgba(255,255,255,0.3),0_8px_20px_-8px_rgba(34,211,238,0.5)]">
+                        <span className="relative flex w-2 h-2">
+                            <span className="absolute inset-0 rounded-full bg-emerald-400 animate-ping opacity-70" />
+                            <span className="relative w-2 h-2 rounded-full bg-emerald-400" />
+                        </span>
+                        <span className="text-[10px] font-semibold text-white tracking-wide">
+                            Shipping in prod
+                        </span>
                     </div>
                 </div>
             </div>

@@ -69,12 +69,12 @@ function Contact() {
                             target="_blank"
                             rel="noreferrer"
                             aria-label={s.label}
-                            className="w-11 h-11 flex items-center justify-center rounded-full card-glass hover:-translate-y-1 hover:bg-white/10 transition-all"
+                            className="group w-11 h-11 flex items-center justify-center rounded-full bg-white/[0.06] backdrop-blur-2xl backdrop-saturate-150 border border-white/20 shadow-[inset_0_1px_0_rgba(255,255,255,0.2)] hover:-translate-y-1 hover:bg-white/10 hover:border-[var(--primary)]/60 hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.2),0_0_20px_rgba(168,85,247,0.5)] transition-[transform,background-color,border-color,box-shadow] duration-200 will-change-transform"
                         >
                             <img
                                 src={s.icon}
                                 alt=""
-                                className="w-5 h-5 brightness-0 invert opacity-80"
+                                className="w-5 h-5 brightness-0 invert opacity-80 transition-[filter,opacity] duration-200 group-hover:brightness-100 group-hover:invert-0 group-hover:opacity-100"
                             />
                         </a>
                     ))}
